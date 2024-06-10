@@ -43,3 +43,19 @@ npx hardhat node
 ```bash
 npx hardhat ignition deploy ./ignition/modules/Lock.ts --network localhost
 ```
+
+## Verify the contracts
+
+When you deploy to a testnet or mainnet, you probably want to verify the contract at the same time for which you can do:
+
+```bash
+npx hardhat ignition deploy ignition/modules/Lock.ts --network base-sepolia --deployment-id base-sepolia-deployment
+```
+
+## Hardhat Tasks
+
+### Print the list of available accounts
+
+```bash
+npx hardhat accounts
+```
