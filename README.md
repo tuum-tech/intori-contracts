@@ -44,6 +44,14 @@ npx hardhat node
 npx hardhat ignition deploy ./ignition/modules/CredentialRegistry.ts --network localhost
 ```
 
+3. Run an interact script
+
+```bash
+npm run interact
+```
+
+This runs the script in `scripts/interact.ts` which has an example code on how the register and verify methods work.
+
 ## Verify the contracts
 
 When you deploy to a testnet or mainnet, you probably want to verify the contract at the same time for which you can do:
