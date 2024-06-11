@@ -41,7 +41,7 @@ npx hardhat node
 2. Deploy the Ignition module
 
 ```bash
-npx hardhat ignition deploy ./ignition/modules/Lock.ts --network localhost
+npx hardhat ignition deploy ./ignition/modules/CredentialRegistry.ts --network localhost
 ```
 
 ## Verify the contracts
@@ -49,7 +49,7 @@ npx hardhat ignition deploy ./ignition/modules/Lock.ts --network localhost
 When you deploy to a testnet or mainnet, you probably want to verify the contract at the same time for which you can do:
 
 ```bash
-npx hardhat ignition deploy ignition/modules/Lock.ts --network base-sepolia --deployment-id base-sepolia-deployment
+npx hardhat ignition deploy ignition/modules/CredentialRegistry.ts --network base-sepolia --deployment-id base-sepolia-deployment
 ```
 
 ## Hardhat Tasks
@@ -59,3 +59,26 @@ npx hardhat ignition deploy ignition/modules/Lock.ts --network base-sepolia --de
 ```bash
 npx hardhat accounts
 ```
+
+## Contract Info
+
+- CredentialMetadata Struct: Holds information about a registered credential.
+- Mappings: Stores issuer-to-credential IDs, recipient DID-to-credential IDs, credential type-to-credential IDs, and issued/received credential counts.
+- registerCredential Function:
+  - Checks if the credential ID is already registered.
+  - Stores the credential metadata.
+  - Updates issuer, recipient, and type-based mappings.
+  - Emits a CredentialRegistered event.
+- Getter Functions:
+  - getCredentialsByIssuer: Retrieves credentials issued by a specific address.
+  - getCredentialsByRecipient: Retrieves credentials associated with a recipient DID.
+  - getCredentialsByType: Retrieves credentials of a specific type.
+- verifyCredential Function:
+  - Checks if the credential ID exists.
+  - Uses verifyEvmDid for Ethereum-based DIDs (optional for other DID methods).
+  - Emits a CredentialVerified event if the signature is valid.
+- verifyEvmDid Function:
+  - Extracts the address from the DID (assuming Ethereum DID format).
+  - Calculates the message hash as expected by the contract (including the Ethereum Signed Message prefix).
+  - Recovers the signer's address using ecrecover.
+  - Compares the recovered address with the recipient address and returns it if valid.
