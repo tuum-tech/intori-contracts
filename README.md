@@ -28,6 +28,12 @@ Running the tests in parallel
 npx hardhat test --parallel
 ```
 
+### Compile the contracts
+
+```bash
+npx hardhat compile
+```
+
 ## Deploy the contracts
 
 You can deploy in the `localhost` network following these steps:
@@ -57,7 +63,7 @@ This runs the script in `scripts/interact.ts` which has an example code on how t
 When you deploy to a testnet or mainnet, you probably want to verify the contract at the same time for which you can do:
 
 ```bash
-npx hardhat ignition deploy ignition/modules/CredentialRegistry.ts --network base-sepolia --deployment-id base-sepolia-deployment
+npx hardhat ignition deploy ignition/modules/CredentialRegistry.ts --network base_sepolia --deployment-id base_sepolia_deployment --verify
 ```
 
 ## Hardhat Tasks

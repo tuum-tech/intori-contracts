@@ -40,13 +40,13 @@ const config: HardhatUserConfig = {
       gasPrice: 1000000000
     },
     // for testnet
-    'base-sepolia': {
+    base_sepolia: {
       url: 'https://sepolia.base.org',
       accounts: [process.env.WALLET_PRIVATE_KEY as string],
       gasPrice: 1000000000
     },
     // for mainnet
-    'base-mainnet': {
+    base_mainnet: {
       url: 'https://mainnet.base.org',
       accounts: [process.env.WALLET_PRIVATE_KEY as string],
       gasPrice: 1000000000
@@ -54,11 +54,11 @@ const config: HardhatUserConfig = {
   },
   etherscan: {
     apiKey: {
-      'base-sepolia': 'PLACEHOLDER_STRING'
+      base_sepolia: '74IAPJZWJYNS5MXY8S3QBXACZ5YDVN2IE5'
     },
     customChains: [
       {
-        network: 'base-sepolia',
+        network: 'base_sepolia',
         chainId: 84532,
         urls: {
           apiURL: 'https://api-sepolia.basescan.org/api',
